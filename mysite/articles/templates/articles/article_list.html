@@ -1,0 +1,28 @@
+{% extends "base_layout.html" %}
+{% block title %}Article List{% endblock title %}
+{% block content %}
+    <h1>Article List</h1>
+    <div class="articles">
+        {% for element in articles %}
+            <div class="article__item">
+                <h2>
+                    <a href="{% url 'articles:article-detail' slug=element.slug %}">
+                        {{ element.title }}
+                    </a>
+                </h2>
+                <p>
+                        <!-- {{ element.body }} -->
+                    {{ element.snippet }}
+                </p>
+                <time>
+                    {{ element.date }}
+                </time>
+            </div>
+        {% endfor %}
+    </div>
+    {% if user.is_authenticated %}
+    <div class="article-create__link">
+        <a href="{% url 'articles:create' %}" class="act_button">Create Article</a>
+    </div>
+    {% endif %}
+{% endblock content %}
