@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}soft{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
 </head>
@@ -13,22 +13,33 @@
                 <a href="{% url 'homepage' %}"></a>
                 <img src="{% static 'css/softlogo.jpg' %}" alt="logo">
             </div>
-            <nav>
+            <input type="checkbox" id="burger-toggle">
+            <label for="burger-toggle" class="burger">&#9776;</label>
+            <nav class="nav-menu">
                 <ul>
-                    <li><a href="{% url 'homepage' %}">landing</a></li>
-                    <li><a href="{% url 'homepage' %}">articles</a></li>
-                    <li><a href="{% url 'about' %}">about us</a></li>
-                    <li><a href="{% url 'accounts:signup' %}">sign up</a></li>
-
+                    <li>
+                        <a href="{% url 'homepage' %}">landing</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'homepage' %}">articles</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}">about us</a>
+                    </li>
                     {% if user.is_authenticated %}
                         <li>
-                            <form action="{% url 'accounts:logout' %}" method="post" class="nav-log" style="display:inline;">
+                            <form action="{% url 'accounts:logout' %}" method="post" class="logout-form" >
                                 {% csrf_token %}
-                                <button type="submit">Logout</button>
+                                <button type="submit" class="act_second_button">Logout</button>
                             </form>
                         </li>
                     {% else %}
-                        <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                        <li>
+                            <a href="{% url 'accounts:login' %}">Login</a>
+                        </li>
+                        <li>
+                            <a class="act_button_2" href="{% url 'accounts:signup' %}">Sign Up</a>
+                        </li>
                     {% endif %}
                 </ul>
             </nav>

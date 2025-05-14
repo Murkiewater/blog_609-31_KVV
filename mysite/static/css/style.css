@@ -2,6 +2,7 @@ html, body {
     background-color: #000000;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
     height: 100%;
 }
 header, main, footer {
@@ -30,20 +31,91 @@ img {
 .header_container {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding: 10px 20px;
+    /* justify-content: space-between; */
+    padding: 10px 0;
+    /* gap: 10px; */
     background-color: #000000;
     border-bottom: 2px solid #aaa;
-    gap: 40px;
+    width: 100%;
 }
+
 nav ul {
     display: flex;
-    text-decoration: none;
+    justify-content: space-between;
+    align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 380px; 
 }
+
+nav {
+    flex: 1;
+}
+
+.nav-menu {
+
+}
+
+.nav-menu ul {
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.burger {
+    display: none;
+    font-size: 3rem;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Скрытое меню по умолчанию */
+.nav-menu {
+    justify-content: center;
+    margin: 20px 20px 20px 20px;
+}
+
+#burger-toggle {
+    display: none;
+}
+
+/* Адаптация для мобилок */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        background-color: #000;
+        padding: 20px 0;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    #burger-toggle:checked ~ .nav-menu {
+        display: flex;
+    }
+}
+
+nav ul li {
+    justify-content: space-between;
+    text-align: center;
+    /* display: inline-block; */
+}
+
 nav a, nav button {
     color: rgb(188, 188, 188);
     text-decoration: none;
@@ -52,13 +124,18 @@ nav a, nav button {
     cursor: pointer;
 }
 .logo img{
-    height: 100px;
+    height: 125px;
 }
 .articles {
     display: flex;
     flex-direction: column;
     gap: 30px;
     padding: 20px;
+}
+
+.article__item {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .article__item {
@@ -96,6 +173,98 @@ nav a, nav button {
 }
 
 .act_button {
+    text-align: center;
+    display: block;
+    margin: 30px auto 0;
+    padding: 5px 50px;
+    background-color: #0491c0;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.act_button_2 {
+    text-align: center;
+    display: block;
+    margin: auto;
+    padding: 5px 50px;
+    background-color: #0491c0;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.act_danger_button {
+    text-align: center;
+    display: block;
+    display: block;
+    margin: 30px auto 0;
+    padding: 5px 50px;
+    background-color: #c00404d8;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.act_danger_button_2 {
+   text-align: center;
+    display: block;
+    display: block;
+    margin: auto;
+    padding: 5px 50px;
+    background-color: #c00404d8;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease; 
+}
+
+.act_second_button {
+    text-align: center;
+    display: block;
+    margin: auto;
+    padding: 5px 50px;
+    background-color: #696969b8;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+a.act_danger_button {
+    width: 15%;
+}
+
+a.act_button {
+    width: 25%;
+    display: block;
+}
+
+a.act_button_2 {
+    /* width: 25%; */
+    display: block;
+}
+
+
+/* .act_button {
     margin-top: 30px;
     padding: 5px 15px;
     font-size: 1rem;
@@ -107,7 +276,7 @@ nav a, nav button {
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.2s ease;
-}
+} */
 
 .act_button:hover {
     background-color: #009fcc;
@@ -132,8 +301,8 @@ form button {
     padding: 20px;
 }
 .form {
-    max-width: 400px;
-    margin: 40px auto;
+    max-width: 320px;
+    margin: 20px auto;
     padding: 30px;
     background-color: #1e1e1e;
     border: 1px solid #333;
@@ -144,6 +313,7 @@ form button {
 .form input, .form textarea, .form select, .form text {
     padding: 10px;
     margin-bottom: 10px;
+    display: block;
     font-size: 1rem;
     border: 1px solid #444;
     border-radius: 5px;
@@ -151,4 +321,119 @@ form button {
     color: #f0f0f0;
     outline: none;
     transition: border 0.2s;
+}
+
+.logout-form {
+    display: flex;
+    justify-content: center; /* или left / right */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logout-form button {
+    width: 100%;
+    max-width: 150px;
+}
+
+.create_button {
+    display: flex;
+    justify-content: center;
+}
+.article-confirm-delete {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .header_container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    nav a, nav button {
+        color: rgb(188, 188, 188);
+        text-decoration: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 25%;
+    }
+
+    a.act_button {
+        width: 30%;
+    }
+    a.act_second_button {
+        width: 25%;
+    }
+
+    .logo img {
+        height: 75px; 
+    }
+
+    .articles {
+        padding: 10px;
+    }
+
+    .article__item {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+
+    .act_button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+
+    .smth {
+        font-size: 32px;
+        padding: 10px;
+    }
+
+    .article-create__link {
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+  .form {
+    max-width: 80%; 
+    padding: 20px;
+  }
+}
+input[type="file"] {
+  border: none;
+  outline: none;
+  background-color: #2c2c2c;
+  color: #ccc;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #0491c0;
+  color: #000;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #007fa3;
 }
